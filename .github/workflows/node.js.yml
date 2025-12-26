@@ -1,0 +1,53 @@
+name: Webapp Frontend CI
+
+on:
+  push:
+    branches: [ "main" ]
+  
+
+jobs:
+  frontend:
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]  # Vite 5 supports >=18; 20 LTS preferred
+env:
+REACT_WEBSITE_URL: ${{secrets.REACT_WEBSITE_URL}}
+    defaults:
+      run:
+        working-directory: webapp/frontend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+          cache-dependency-path: webapp/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Lint (if configured)
+        run: npm run lint --if-present
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist-${{ matrix.node-version }}
+          path: webapp/frontend/dist
+
+      - name: Test (if present)
+        run: npm test --if-present
