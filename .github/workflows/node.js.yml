@@ -15,7 +15,10 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x] # Vite 5 supports >=18; 20 LTS preferred
+        node-version:
+          - "18.x"
+          - "20.x"
+          - "22.x"
 
     defaults:
       run:
