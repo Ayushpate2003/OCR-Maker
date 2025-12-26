@@ -3,17 +3,20 @@ name: Webapp Frontend CI
 on:
   push:
     branches: [ "main" ]
-  
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
 
 jobs:
   frontend:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]  # Vite 5 supports >=18; 20 LTS preferred
-env:
-REACT_WEBSITE_URL: ${{secrets.REACT_WEBSITE_URL}}
+        node-version: [18.x, 20.x, 22.x] # Vite 5 supports >=18; 20 LTS preferred
+
     defaults:
       run:
         working-directory: webapp/frontend
@@ -21,6 +24,8 @@ REACT_WEBSITE_URL: ${{secrets.REACT_WEBSITE_URL}}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -37,17 +42,21 @@ REACT_WEBSITE_URL: ${{secrets.REACT_WEBSITE_URL}}
             npm install
           fi
 
-      - name: Lint (if configured)
+      - name: Lint
         run: npm run lint --if-present
 
       - name: Build
+        env:
+          REACT_WEBSITE_URL: ${{ secrets.REACT_WEBSITE_URL }}
+          VITE_WEBSITE_URL: ${{ secrets.REACT_WEBSITE_URL }}
+          CI: false
         run: npm run build
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: frontend-dist-${{ matrix.node-version }}
-          path: webapp/frontend/dist
+          path: dist/
 
-      - name: Test (if present)
+      - name: Test
         run: npm test --if-present
