@@ -45,8 +45,21 @@ jobs:
             npm install
           fi
 
-      - name: Lint
-        run: npm run lint --if-present
+      - name: Lint (skip if no config)
+        run: |
+          set -e
+          has_config=false
+          for f in .eslintrc.js .eslintrc.cjs .eslintrc.json .eslintrc.yaml .eslintrc.yml; do
+            if [ -f "$f" ]; then
+              has_config=true
+              break
+            fi
+          done
+          if [ "$has_config" = true ] || grep -q '"eslintConfig"' package.json; then
+            npm run lint --if-present
+          else
+            echo "No ESLint config; skipping lint."
+          fi
 
       - name: Build
         env:
