@@ -1,0 +1,17 @@
+# RAG System - Backend Requirements
+# Add these to your main requirements.txt or use separately
+
+# Vector Database
+chromadb==0.3.21
+
+# Embeddings
+sentence-transformers==2.2.2
+torch==2.0.1  # Required by sentence-transformers
+
+# HTTP Client
+requests==2.31.0
+
+# Already in main requirements.txt:
+# fastapi
+# pydantic
+# uvicorn

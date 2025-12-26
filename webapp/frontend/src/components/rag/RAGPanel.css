@@ -1,0 +1,173 @@
+/* RAG Panel Component Styles */
+
+.rag-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+}
+
+.rag-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rag-panel-header h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+.rag-health-status {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.rag-health-ok {
+  color: #4caf50;
+}
+
+.rag-health-warning {
+  color: #ff9800;
+}
+
+.rag-panel-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 20px;
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+  overflow-x: auto;
+}
+
+.rag-tab {
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+
+.rag-tab:hover {
+  color: #667eea;
+}
+
+.rag-tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.rag-panel-content {
+  flex: 1;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.rag-panel-content > * {
+  width: 100%;
+  height: 100%;
+}
+
+.rag-error-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff6b6b;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rag-error-notification button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0;
+  line-height: 1;
+}
+
+.rag-error-notification button:hover {
+  opacity: 0.8;
+}
+
+.rag-loading,
+.rag-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  color: #666;
+  font-size: 1.1em;
+}
+
+.rag-error {
+  color: #c33;
+}
+
+@media (max-width: 768px) {
+  .rag-panel {
+    height: 100%;
+  }
+
+  .rag-panel-header {
+    padding: 16px;
+  }
+
+  .rag-panel-header h1 {
+    font-size: 1.4em;
+  }
+
+  .rag-panel-tabs {
+    padding: 0;
+  }
+
+  .rag-tab {
+    padding: 12px 16px;
+    font-size: 0.9em;
+  }
+
+  .rag-panel-content {
+    padding: 12px;
+  }
+
+  .rag-error-notification {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    width: auto;
+  }
+}

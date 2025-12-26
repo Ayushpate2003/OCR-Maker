@@ -1,0 +1,163 @@
+/* RAG Indexer Component Styles */
+
+.rag-indexer {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rag-indexer-header {
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-bottom: 2px solid #667eea;
+}
+
+.rag-indexer-header h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.rag-indexer-content {
+  padding: 20px;
+}
+
+.rag-indexer-content > p {
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.rag-file-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.rag-file-input {
+  padding: 12px;
+  border: 2px dashed #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: inherit;
+}
+
+.rag-file-input:hover:not(:disabled) {
+  border-color: #667eea;
+  background: #f0f7ff;
+}
+
+.rag-file-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rag-selected-files {
+  background: #f0f7ff;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 3px solid #667eea;
+}
+
+.rag-selected-files strong {
+  display: block;
+  color: #667eea;
+  margin-bottom: 8px;
+}
+
+.rag-selected-files ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rag-selected-files li {
+  padding: 4px 0;
+  color: #333;
+  font-size: 0.9em;
+}
+
+.rag-selected-files li::before {
+  content: '📄 ';
+  margin-right: 4px;
+}
+
+.rag-clear-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.rag-clear-checkbox input[type='checkbox'] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea;
+}
+
+.rag-clear-checkbox input[type='checkbox']:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rag-indexer-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.rag-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.rag-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.rag-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rag-btn-primary {
+  background: #667eea;
+  color: white;
+}
+
+.rag-btn-primary:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+.rag-progress-message {
+  margin-top: 12px;
+  padding: 12px;
+  background: #e8eef7;
+  border-left: 3px solid #667eea;
+  border-radius: 4px;
+  color: #333;
+  font-size: 0.95em;
+}
+
+@media (max-width: 600px) {
+  .rag-indexer-actions {
+    flex-direction: column;
+  }
+
+  .rag-btn {
+    width: 100%;
+  }
+}

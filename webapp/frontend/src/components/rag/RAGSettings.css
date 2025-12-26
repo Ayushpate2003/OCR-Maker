@@ -1,0 +1,196 @@
+/* RAG Settings Component Styles */
+
+.rag-settings {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rag-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-bottom: 2px solid #667eea;
+}
+
+.rag-settings-header h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.rag-toggle-advanced {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.2s;
+}
+
+.rag-toggle-advanced:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.rag-settings-content {
+  padding: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.rag-setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.rag-setting-group label {
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rag-setting-group input[type='range'] {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+.rag-setting-group input[type='range']:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rag-setting-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  background: white;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.rag-setting-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.rag-setting-group select:disabled {
+  background: #eee;
+  cursor: not-allowed;
+}
+
+.rag-setting-group small {
+  color: #666;
+  font-size: 0.85em;
+}
+
+.rag-readonly-field {
+  padding: 10px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #333;
+  word-break: break-all;
+}
+
+.rag-stats {
+  background: #f0f7ff;
+  border: 1px solid #b3d9ff;
+  border-radius: 6px;
+  padding: 12px;
+  margin: 20px 0;
+}
+
+.rag-stats h4 {
+  margin: 0 0 10px 0;
+  color: #667eea;
+}
+
+.rag-stats ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rag-stats li {
+  padding: 4px 0;
+  color: #333;
+  font-size: 0.95em;
+}
+
+.rag-stats strong {
+  color: #667eea;
+}
+
+.rag-settings-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.rag-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.rag-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.rag-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rag-btn-primary {
+  background: #667eea;
+  color: white;
+}
+
+.rag-btn-primary:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+.rag-btn-danger {
+  background: #ff6b6b;
+  color: white;
+}
+
+.rag-btn-danger:hover:not(:disabled) {
+  background: #ee5a55;
+}
+
+@media (max-width: 600px) {
+  .rag-settings-content {
+    max-height: 500px;
+  }
+
+  .rag-settings-actions {
+    flex-direction: column;
+  }
+
+  .rag-btn {
+    width: 100%;
+  }
+}
